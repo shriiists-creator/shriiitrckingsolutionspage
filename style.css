@@ -1,0 +1,377 @@
+:root {
+    --primary-gradient: linear-gradient(180deg, #6a11cb 0%, #2575fc 100%);
+    --card-bg: rgba(255, 255, 255, 0.2);
+    --card-bg-solid: rgba(255, 255, 255, 0.9);
+    --text-dark: #333;
+    --text-light: #fff;
+    --accent-blue: #4facfe;
+    --border-radius: 15px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #e0f0ff;
+    /* Light blue outer background */
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.mobile-container {
+    width: 100%;
+    max-width: 500px;
+    background: var(--primary-gradient);
+    min-height: 100vh;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    color: var(--text-dark);
+}
+
+/* Language Selector */
+.lang-selector {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+.lang-selector button {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+}
+
+/* Header Section */
+.header-section {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.logo-area {
+    background: white;
+    border-radius: 0 0 50% 50% / 0 0 20% 20%;
+    padding: 40px 20px 60px;
+    margin: -20px -20px 20px;
+    color: #4b0082;
+    position: relative;
+}
+
+.logo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logo-placeholder i {
+    font-size: 40px;
+    color: #4b0082;
+}
+
+.logo-text h1 {
+    font-size: 24px;
+    line-height: 1;
+    margin: 0;
+}
+
+.logo-text h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.logo-text h3 {
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.profile-area {
+    margin-top: -50px;
+    position: relative;
+}
+
+.profile-img img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid white;
+    object-fit: cover;
+}
+
+.profile-area .name {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.profile-area .title,
+.profile-area .company {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.bio-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-top: 20px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.bio-icon {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: #4b0082;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.bio-card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.bio-card p {
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* General Card Styles */
+.card-section {
+    background: var(--card-bg);
+    /* Semi-transparent white based on image */
+    background: rgba(255, 255, 255, 0.45);
+    /* Lighter for better contrast */
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c0e52;
+}
+
+/* Contact Grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.contact-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.icon-box {
+    background: rgba(255, 255, 255, 0.5);
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #4b0082;
+    flex-shrink: 0;
+}
+
+.info {
+    font-size: 12px;
+    word-break: break-word;
+}
+
+.info label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #333;
+}
+
+/* QR Code */
+.qr-section {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.qr-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    max-width: 200px;
+    margin: 0 auto 15px;
+}
+
+.qr-profile-pic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.qr-profile-pic img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.qr-code-img {
+    width: 100%;
+    height: auto;
+}
+
+.download-btn {
+    background: #4facfe;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Business Hours */
+.hours-table {
+    width: 100%;
+    font-size: 12px;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.hours-table td {
+    padding: 5px 0;
+}
+
+.hours-table td:first-child {
+    font-weight: 600;
+}
+
+.hours-table td:last-child {
+    text-align: right;
+}
+
+/* Inquiries Form */
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group {
+    flex: 1;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.input-wrapper {
+    position: relative;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4facfe;
+    font-size: 12px;
+}
+
+.input-wrapper input,
+textarea {
+    width: 100%;
+    border: none;
+    padding: 10px 10px 10px 30px;
+    font-size: 13px;
+    outline: none;
+}
+
+textarea {
+    height: 80px;
+    padding: 10px;
+    border-radius: 5px;
+    resize: none;
+}
+
+.btn-primary {
+    background: #4facfe;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    margin-top: 10px;
+    opacity: 0.8;
+}

@@ -1,0 +1,449 @@
+:root {
+    /* Gradient: Deep Purple/Indigo top -> Lighter Blue bottom */
+    --bg-gradient: linear-gradient(180deg, #101228 0%, #001f4d 40%, #005f99 100%);
+
+    /* Card Background: Semi-transparent / Tinted */
+    --card-bg: rgba(16, 25, 40, 0.6);
+    --card-border: 1px solid #00d4ff;
+    /* Cyan glow border as per reference style usually implied */
+    --card-border-subtle: 1px solid rgba(0, 212, 255, 0.3);
+
+    /* Text Colors */
+    --text-main: #ffffff;
+    --text-muted: #b0c4de;
+    --text-card-inner: #d1e8ff;
+    /* Light text for dark cards, or Dark if card is light. 
+                                   WAIT: User said "Dark text inside the cards". 
+                                   But "Deep Purple" bg suggests dark mode. 
+                                   Let's re-read: "Cards should have a semi-transparent or light purple/blue tinted background" 
+                                   AND "Dark text inside the cards for readability". 
+                                   If bg is Deep Purple, cards must be light for dark text to work. 
+                                   Let's try a light glassmorphism card. */
+    --card-bg-light: rgba(220, 235, 255, 0.85);
+    /* Light blueish tint, high opacity for readability */
+
+    /* Typography */
+    --font-family: 'Poppins', sans-serif;
+
+    /* Accents */
+    --accent-cyan: #00d4ff;
+    --accent-blue: #007bff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+}
+
+body {
+    background: #000;
+    /* Fallback */
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.mobile-container {
+    width: 100%;
+    max-width: 480px;
+    /* Standard mobile width constraint */
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    padding: 20px 15px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Language Selector */
+.lang-selector {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 20;
+}
+
+.lang-selector button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+}
+
+/* Header Section */
+.header-section {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    padding-top: 40px;
+}
+
+.logo-area {
+    /* Logo styling */
+    margin-bottom: 20px;
+}
+
+.logo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #4facfe;
+    text-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+}
+
+.logo-placeholder i {
+    font-size: 3rem;
+}
+
+.logo-text h1,
+.logo-text h2,
+.logo-text h3 {
+    line-height: 1;
+    margin: 0;
+    text-align: left;
+    color: #fff;
+}
+
+.logo-text h1 {
+    color: #4facfe;
+    font-size: 1.5rem;
+}
+
+.logo-text h2 {
+    font-size: 1.2rem;
+}
+
+.logo-text h3 {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.profile-area .profile-img img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid #4facfe;
+    /* Cyan border */
+    box-shadow: 0 0 15px rgba(79, 172, 254, 0.4);
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile-area .name {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.profile-area .title,
+.profile-area .company {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+/* Floating Cards */
+.card-section {
+    background: var(--card-bg-light);
+    border-radius: 20px;
+    /* Heavy rounded corners */
+    padding: 20px;
+    margin-bottom: 25px;
+    /* Distinct spacing */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    color: #333;
+    /* Dark text inside cards */
+}
+
+/* Titles that are OUTSIDE cards (if we moved them out) 
+   But currently they are inside .card-section in HTML structure.
+   The prompt says "Use White text for the main headers on the gradient background"
+   So we should visually pull the headers OUT of the card or style them to look separate.
+   
+   However, HTML puts <h3> inside <section class="card-section">.
+   We can negative-margin them up or simply style them to be white and sit above the card content.
+   OR, we rely on the implementation plan's HTML structure.
+   
+   Let's check the HTML I wrote. `<h3>` is inside `.card-section`.
+   I will use a pseudo-element or negative margin to make it look like it's on the background?
+   
+   Actually, easiest is to make the h3 white and move it up outside the card via CSS, 
+   OR just let them be dark inside.
+   
+   Wait, Prompt: "Use White text for the main headers on the gradient background, and Dark text inside the cards".
+   This implies the headers should be VISUALLY outside.
+*/
+
+.card-section {
+    margin-top: 40px;
+    /* Make space for header */
+    padding-top: 25px;
+}
+
+.card-section h3 {
+    position: absolute;
+    top: -30px;
+    /* Move up outside the card */
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #fff;
+    /* White text on gradient */
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Bio Card specific */
+.bio-card {
+    /* Bio might be exception, often looks good as a card. */
+    text-align: center;
+}
+
+.bio-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.bio-icon {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #005f99;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* For bio card which is inside header, header is usually just white text.
+       But I wrapped it in .card-section in HTML. 
+       If header bio needs to correspond to the design, it should be a card. */
+}
+
+
+/* Contact Grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    /* Stack icon and text for better card fit? Or Keep row? Reference says grid. Row is safer. */
+    gap: 8px;
+}
+
+.icon-box {
+    width: 35px;
+    height: 35px;
+    background: #e0f0ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #007bff;
+    flex-shrink: 0;
+}
+
+.info label {
+    display: block;
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: 600;
+}
+
+.info span {
+    font-size: 0.85rem;
+    color: #222;
+    font-weight: 500;
+    word-break: break-all;
+}
+
+
+/* QR Code Styling */
+.qr-container {
+    background: #fff;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    max-width: 180px;
+    margin: 0 auto 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.qr-profile-pic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    background: #fff;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.qr-profile-pic img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.qr-code-img {
+    width: 100%;
+    display: block;
+}
+
+/* Download Button */
+.download-btn {
+    background: #00c6ff;
+    /* Cyan */
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
+    transition: transform 0.2s;
+}
+
+.download-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* Business Hours */
+.hours-table {
+    width: 100%;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.hours-table td {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.hours-table tr:last-child td {
+    border-bottom: none;
+}
+
+.hours-table td:last-child {
+    text-align: right;
+    font-weight: 500;
+}
+
+
+/* Form Styling */
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+    color: #444;
+    font-weight: 500;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.input-wrapper input,
+textarea {
+    width: 100%;
+    padding: 12px 12px 12px 38px;
+    /* Room for icon */
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: 0.9rem;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+textarea {
+    padding-left: 12px;
+    /* No icon usually for textarea unless spec'd */
+    height: 100px;
+    resize: none;
+}
+
+.input-wrapper input:focus,
+textarea:focus {
+    border-color: #0072ff;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary {
+    width: 100%;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid #0072ff;
+    color: #0072ff;
+}
+
+footer {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    padding-bottom: 20px;
+}
